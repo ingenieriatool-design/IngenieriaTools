@@ -18,6 +18,17 @@ export default function FormulaSubstitution({
       </h2>
 
       <div className="space-y-6">
+
+        <div>
+          <h3 className="mb-2 text-lg font-semibold text-gray-700">
+            Fórmula
+          </h3>
+
+          <div className="rounded-lg bg-gray-100 p-4 font-mono text-lg">
+            {calculation.formula}
+          </div>
+        </div>
+
         <div>
           <h3 className="mb-2 text-lg font-semibold text-gray-700">
             Sustitución
@@ -30,13 +41,14 @@ export default function FormulaSubstitution({
 
         <div>
           <h3 className="mb-2 text-lg font-semibold text-gray-700">
-            Operación
+            Explicación
           </h3>
 
-          <div className="rounded-lg bg-blue-50 p-4 font-mono text-lg text-blue-700">
-            {calculation.operation}
+          <div className="rounded-lg bg-blue-50 p-4 text-gray-700">
+            {calculation.explanation}
           </div>
         </div>
+
       </div>
     </div>
   );

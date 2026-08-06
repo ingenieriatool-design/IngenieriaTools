@@ -24,7 +24,6 @@ export default function CalculatorRenderer({
   tool,
 }: CalculatorRendererProps) {
   const [values, setValues] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, string | number>>({});
   const [calculation, setCalculation] =
     useState<CalculationResult | null>(null);
 
@@ -46,7 +45,6 @@ export default function CalculatorRenderer({
 
       const result = calculator(values);
 
-      setResults(result.outputs);
       setCalculation(result);
     } catch (error) {
       if (error instanceof Error) {
@@ -57,7 +55,6 @@ export default function CalculatorRenderer({
 
   const handleClear = () => {
     setValues({});
-    setResults({});
     setCalculation(null);
   };
 
@@ -94,7 +91,7 @@ export default function CalculatorRenderer({
 
       <CalculatorResults
         outputs={tool.outputs}
-        results={results}
+        results={calculation?.outputs ?? {}}
       />
 
       {tool.formula && (
