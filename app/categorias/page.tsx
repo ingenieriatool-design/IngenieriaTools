@@ -4,7 +4,9 @@ import { tools } from "@/data/tools";
 
 export default function CategoriesPage() {
   const availableCategories = categories.filter((category) =>
-    tools.some((tool) => tool.category === category.id)
+    tools.some(
+  (tool) => tool.category.toLowerCase() === category.id.toLowerCase()
+         )
   );
 
   return (
@@ -25,8 +27,8 @@ export default function CategoriesPage() {
       <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {availableCategories.map((category) => {
           const count = tools.filter(
-            (tool) => tool.category === category.id
-          ).length;
+            (tool) => tool.category.toLowerCase() === category.id.toLowerCase()
+            ).length;
 
           return (
             <CategoryCard

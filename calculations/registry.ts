@@ -1,7 +1,7 @@
 import { calculateResistance } from "./electricidad/ley-ohm";
 import { calculatePower } from "./electricidad/potencia";
 import { calculateCurrent } from "./electricidad/corriente-electrica";
-
+import { calculateVoltage } from "./electricidad/voltaje";
 export interface CalculationStep {
   title: string;
   content: string;
@@ -26,5 +26,6 @@ export type CalculationFunction = (
 export const calculatorRegistry: Record<string, CalculationFunction> = {
   "ley-ohm": calculateResistance,
   "potencia-electrica": calculatePower,
+  "voltaje": calculateVoltage,
   "corriente-electrica": calculateCurrent,
 };
