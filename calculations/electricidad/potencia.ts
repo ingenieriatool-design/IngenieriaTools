@@ -10,24 +10,24 @@ export function calculatePower(
     throw new Error("Ingresa valores válidos.");
   }
 
-  const power = voltage * current;
+  const power = Number((voltage * current).toFixed(2));
 
   return {
-    value: Number(power.toFixed(2)),
-
-    unit: "W",
+    outputs: {
+      power,
+    },
 
     formula: "P = V × I",
 
     substitution: `P = ${voltage} × ${current}`,
 
     explanation:
-      "La potencia eléctrica representa la energía consumida o entregada por un circuito. Se calcula multiplicando el voltaje por la corriente.",
+      "La potencia eléctrica representa la cantidad de energía que un circuito consume o entrega por unidad de tiempo. Se obtiene multiplicando el voltaje por la corriente.",
 
     steps: [
       {
         title: "Paso 1: Identificar los datos",
-        content: `Voltaje (V) = ${voltage} V\nCorriente (I) = ${current} A`,
+        content: `Voltaje = ${voltage} V\nCorriente = ${current} A`,
       },
       {
         title: "Paso 2: Aplicar la fórmula",
@@ -39,11 +39,11 @@ export function calculatePower(
       },
       {
         title: "Paso 4: Realizar el cálculo",
-        content: `P = ${power.toFixed(2)} W`,
+        content: `P = ${power} W`,
       },
       {
         title: "Resultado",
-        content: `La potencia eléctrica es ${power.toFixed(2)} W.`,
+        content: `La potencia eléctrica es ${power} W.`,
       },
     ],
   };

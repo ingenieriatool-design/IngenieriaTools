@@ -1,5 +1,6 @@
-import { calculateResistance } from "./calculations/ohm";
-import { calculateThreePhasePower } from "./calculations/potencia-trifasica";
+import { calculateResistance } from "./electricidad/ley-ohm";
+import { calculatePower } from "./electricidad/potencia";
+import { calculateCurrent } from "./electricidad/corriente-electrica";
 
 export interface CalculationStep {
   title: string;
@@ -24,5 +25,6 @@ export type CalculationFunction = (
 
 export const calculatorRegistry: Record<string, CalculationFunction> = {
   "ley-ohm": calculateResistance,
-  "potencia-trifasica": calculateThreePhasePower,
+  "potencia-electrica": calculatePower,
+  "corriente-electrica": calculateCurrent,
 };

@@ -14,24 +14,24 @@ export function calculateResistance(
     throw new Error("La corriente no puede ser cero.");
   }
 
-  const resistance = voltage / current;
+  const resistance = Number((voltage / current).toFixed(2));
 
   return {
-    value: Number(resistance.toFixed(2)),
-
-    unit: "Ω",
+    outputs: {
+      resistance,
+    },
 
     formula: "R = V / I",
 
     substitution: `R = ${voltage} / ${current}`,
 
     explanation:
-      "La Ley de Ohm establece que la resistencia eléctrica es igual al voltaje dividido entre la corriente que circula por el circuito.",
+      "La Ley de Ohm establece que la resistencia eléctrica es igual al voltaje dividido entre la corriente que circula por un conductor.",
 
     steps: [
       {
         title: "Paso 1: Identificar los datos",
-        content: `Voltaje (V) = ${voltage} V\nCorriente (I) = ${current} A`,
+        content: `Voltaje = ${voltage} V\nCorriente = ${current} A`,
       },
       {
         title: "Paso 2: Aplicar la fórmula",
@@ -43,11 +43,11 @@ export function calculateResistance(
       },
       {
         title: "Paso 4: Realizar el cálculo",
-        content: `R = ${resistance.toFixed(2)} Ω`,
+        content: `R = ${resistance} Ω`,
       },
       {
         title: "Resultado",
-        content: `La resistencia del circuito es ${resistance.toFixed(2)} Ω.`,
+        content: `La resistencia es ${resistance} Ω.`,
       },
     ],
   };
