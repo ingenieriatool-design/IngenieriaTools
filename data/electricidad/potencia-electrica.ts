@@ -52,8 +52,7 @@ export const potenciaElectrica: EngineeringTool = {
 
   formula: "P = V × I",
 
-  example:
-    "Si el voltaje es de 220 V y la corriente es de 2 A, la potencia será de 440 W.",
+  
 
   references: [
     "Ley de Watt",

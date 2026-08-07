@@ -14,8 +14,8 @@ export default function CalculatorInputs({
   onChange,
 }: CalculatorInputsProps) {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-      <h2 className="mb-6 text-2xl font-bold">
+    <div className="rounded-2xl bg-white p-6 shadow-md">
+      <h2 className="mb-6 text-xl font-bold text-gray-900">
         Datos de Entrada
       </h2>
 
@@ -24,6 +24,7 @@ export default function CalculatorInputs({
           <div key={input.id} className="flex flex-col">
             <label className="mb-2 font-medium text-gray-700">
               {input.label}
+
               {input.unit && (
                 <span className="text-gray-500">
                   {" "}({input.unit})
@@ -31,13 +32,31 @@ export default function CalculatorInputs({
               )}
             </label>
 
-            <input
-              type="number"
-              value={values[input.id] ?? ""}
-              onChange={(e) => onChange(input.id, e.target.value)}
-              placeholder={`Ingrese ${input.label.toLowerCase()}`}
-              className="rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500"
-            />
+            {input.options ? (
+              <select
+                value={values[input.id] ?? input.options[0].value}
+                onChange={(e) => onChange(input.id, e.target.value)}
+                className="rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500"
+              >
+                {input.options.map((option) => (
+                  <option
+                    key={option.value}
+                    value={option.value}
+                  >
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <input
+                type="number"
+                inputMode="decimal"
+                value={values[input.id] ?? ""}
+                onChange={(e) => onChange(input.id, e.target.value)}
+                placeholder={`Ingrese ${input.label.toLowerCase()}`}
+                className="rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500"
+              />
+            )}
           </div>
         ))}
       </div>

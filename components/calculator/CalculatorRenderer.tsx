@@ -23,7 +23,21 @@ interface CalculatorRendererProps {
 export default function CalculatorRenderer({
   tool,
 }: CalculatorRendererProps) {
-  const [values, setValues] = useState<Record<string, string>>({});
+
+  // Valores iniciales para selects
+  const initialValues = tool.inputs.reduce(
+    (acc, input) => {
+      if (input.options?.length) {
+        acc[input.id] = input.options[0].value;
+      }
+      return acc;
+    },
+    {} as Record<string, string>
+  );
+
+  const [values, setValues] =
+    useState<Record<string, string>>(initialValues);
+
   const [calculation, setCalculation] =
     useState<CalculationResult | null>(null);
 
@@ -54,7 +68,7 @@ export default function CalculatorRenderer({
   };
 
   const handleClear = () => {
-    setValues({});
+    setValues(initialValues);
     setCalculation(null);
   };
 
